@@ -21,9 +21,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -54,6 +56,7 @@ import com.example.mindscribe.utils.publicsansSemiBold
 
 class CreateProfileActivity : ComponentActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
       //  enableEdgeToEdge()
@@ -84,18 +87,17 @@ class CreateProfileActivity : ComponentActivity() {
             Text(
                 "Customize your profile",
                 fontFamily = publicsansBold,
-                fontSize = 24.sp,
+                fontSize = 26.sp,
                 color = Color("#ffffff".toColorInt()),
             )
             Text(
                 "Add your profile details below!",
                 fontFamily = publicsansSemiBold,
-                fontSize = 15.sp,
+                fontSize = 16.sp,
                 color = Color("#b5b3b3".toColorInt()),
             )
-
             Spacer(modifier= Modifier.weight(1f))
-            Column {
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                 Row (verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
                     modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp)){
@@ -120,12 +122,12 @@ class CreateProfileActivity : ComponentActivity() {
                         )
                     }
                     Spacer(modifier= Modifier.width(20.dp))
-                    Column (){
+                    Column(){
                         Text(
                             text = "PICTURE IDEAS",
                             style = TextStyle(
                                 color = Color("#b5b3b3".toColorInt()),
-                                fontSize = 16.sp,
+                                fontSize = 12.sp,
                                 fontWeight = FontWeight.Normal,
                             ),
                         )
@@ -138,7 +140,6 @@ class CreateProfileActivity : ComponentActivity() {
                                 R.drawable.avatar_5,
                                 R.drawable.avatar_6
                             )
-
                             avatars.forEach { avatar ->
                                 Image(
                                     painter = painterResource(id = avatar),
@@ -151,7 +152,6 @@ class CreateProfileActivity : ComponentActivity() {
                                 )
                             }
                         }
-
                     }
                 }
                 Spacer(modifier=Modifier.width(30.dp))
@@ -180,36 +180,35 @@ class CreateProfileActivity : ComponentActivity() {
                 )
             }
             Spacer(modifier=Modifier.weight(1f))
-
-            Button(
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color("#ed5ac3".toColorInt()),
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 20.dp, end = 20.dp, bottom = 15.dp),
-                shape = RoundedCornerShape(30.dp),
-                onClick = {
-
-                }
-            ) {
-                Text(
-                    modifier = Modifier.padding(
-                        top = 10.dp,
-                        bottom = 10.dp
+            Row {
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color("#ed5ac3".toColorInt()),
                     ),
-                    fontFamily = publicsansSemiBold,
-                    text = "Continue",
-                    color = Color("#ffffff".toColorInt()),
-                    fontSize = 15.sp
-                )
+                    modifier = Modifier.padding(16.dp)
+                        .weight(1f),
+                    shape = RoundedCornerShape(30.dp),
+                    onClick = {
 
+                    }
+                ) {
+                    Text(
+                        modifier = Modifier.padding(
+                            top = 10.dp,
+                            bottom = 10.dp
+                        ),
+                        fontFamily = publicsansSemiBold,
+                        text = "Continue",
+                        color = Color("#ffffff".toColorInt()),
+                        fontSize = 15.sp
+                    )
+                }
             }
-
         }
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileTextField(
