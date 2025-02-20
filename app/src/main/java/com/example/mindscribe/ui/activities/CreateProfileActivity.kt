@@ -133,12 +133,12 @@ class CreateProfileActivity : ComponentActivity() {
                         )
                         FlowRow (modifier=Modifier.fillMaxWidth()){
                             val avatars = listOf(
-                                R.drawable.avatar_1,
-                                R.drawable.avatar_2,
+                                R.drawable.avatar_6,
                                 R.drawable.avatar_3,
-                                R.drawable.avatar_4,
                                 R.drawable.avatar_5,
-                                R.drawable.avatar_6
+                                R.drawable.avatar_1,
+                                R.drawable.avatar_4,
+                                R.drawable.avatar_2,
                             )
                             avatars.forEach { avatar ->
                                 Image(
@@ -183,7 +183,7 @@ class CreateProfileActivity : ComponentActivity() {
             Row {
                 Button(
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color("#ed5ac3".toColorInt()),
+                        containerColor =  Color(0xFF6A5ACD),
                     ),
                     modifier = Modifier.padding(16.dp)
                         .weight(1f),

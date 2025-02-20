@@ -1,5 +1,6 @@
 package com.example.mindscribe.ui.activities
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -37,7 +38,7 @@ import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
 
 
-class IntroScreensActivity : ComponentActivity() {
+class DetailsScreensActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +51,7 @@ class IntroScreensActivity : ComponentActivity() {
             }
         }
     }
+    @SuppressLint("ContextCastToActivity")
     @OptIn(ExperimentalPagerApi::class)
     @Composable
     fun ImageSlider() {
@@ -73,7 +75,7 @@ class IntroScreensActivity : ComponentActivity() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFF121212)).padding(20.dp), // Dark background
+                .background(Color("#333333".toColorInt())).padding(20.dp), // Dark background
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             HorizontalPager(
@@ -192,7 +194,7 @@ class IntroScreensActivity : ComponentActivity() {
                             bottom = 10.dp
                         ),
                         fontFamily = publicsansSemiBold,
-                        text = "Next",
+                        text = if(pagerState.currentPage==(images.size-1)) "Get Started" else "Next",
                         color = Color("#ffffff".toColorInt()),
                         fontSize = 15.sp
                     )
